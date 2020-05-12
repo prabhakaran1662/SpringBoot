@@ -1,0 +1,25 @@
+package prabha.samplePOC.main.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Employee {
+	 public int id;
+	    public String name;
+	    public int sal;
+	    public boolean ststus;
+	    public Employee(int id,String name,int sal,boolean ststus  ){
+	        this.id = id;
+	        this.name = name;
+	        this.sal = sal;
+	        this.ststus = ststus;
+	    }
+	    public static List<Employee> getEmpList(){
+	        List<Employee> list = new ArrayList<>();
+	        list.add(new Employee(1, "A", 2000,true));
+	        list.add(new Employee(2, "B", 3000,true));
+	        list.add(new Employee(3, "C", 4000,true));
+	        list.add(new Employee(4, "D", 5000,true));
+	        return list;
+	    }
+}

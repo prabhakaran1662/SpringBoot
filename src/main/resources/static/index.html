@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"	href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script	src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+<script src="controllers/StudentController.js"></script>
+<script src=""></script>
+
+<style type="text/css">
+body {
+	padding: 1rem 0;
+}
+
+label {
+	cursor: pointer;
+}
+
+.table-wrap {
+	position: relative;
+	overflow: auto;
+	max-height: 500px;
+}
+</style>
+
+</head>
+<body ng-controller="StudentController">
+	<div class="container">
+		<div class="page-header">
+			<h1>Students List</h1>
+		</div>
+
+		<hr />
+
+		<div class='row'>
+			<div class='col-md-8'>
+
+				<div class="table-wrap">
+					<table class='table table-striped table-bordered table-hover'>
+						<colgroup>
+							<col style="width: 1px" />
+							<col style="width:;" />
+							<col style="width: 100px" />
+							<col style="width: 100px" />
+							<col style="width: 200px" />
+						</colgroup>
+						<thead class="thead-inverse">
+							<tr>
+								<th class="text-xs-center">Id</th>
+								<th>Name</th>
+								<th class="text-xs-center">Age</th>
+								<th class="text-xs-center">Mark</th>
+								<th class="text-xs-center">Total</th>
+								<th class="text-xs-center">Action</th>
+							</tr>
+						</thead>
+						<tbody ng-repeat='student in studentList' >
+							<tr >
+								<td ng-show='editstd' class="text-xs-center">{{student.id}}</td>
+								<td ng-show='editstd' class="text-xs-center">{{student.name}}</td>
+								<td ng-show='editstd' class="text-xs-center">{{student.age}}</td>
+								<td ng-show='editstd' class="text-xs-center">{{student.mark}}</td>
+								<td ng-show='editstd' class="text-xs-center">{{student.totalmark}}</td>
+								
+								<td ng-hide='editstd' class="text-xs-center">{{student.id}}</td>
+								<td ng-hide='editstd' class="text-xs-center"> <input class='form-control' ng-model='student.name' type='text'></td>
+								<td ng-hide='editstd' class="text-xs-center"> <input class='form-control' ng-model='student.age' type='number'></td>
+								<td ng-hide='editstd' class="text-xs-center"> <input class='form-control' ng-model='student.mark' type='number'></td>
+								<td ng-hide='editstd' class="text-xs-center"> <input class='form-control' ng-model='student.totalmark' type='number'></td>
+								
+								<td class="text-xs-center">
+								<a ng-show='editstd' class='btn btn-primary' href='' ng-click='updateStudent(student)'>Update</a>
+								<a ng-hide='editstd' class='btn btn-success' href='' ng-click='saveStudent(student)'>Save</a>
+								<a class='btn btn-danger' href='' ng-click='deleteStudent(student)'>Delete</a>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class='col-md-4'>
+				<h5>Add Student</h5>
+				<form>
+					<div class='form-group'>
+						<label >Id:</label>
+						 <input class='form-control' ng-model='newStudent.id' type='number'>
+							
+					</div>
+					<div class='form-group'>
+						<label >Name:</label>
+						 <input class='form-control' ng-model='newStudent.name' type='text'>
+							
+					</div>
+					<div class='form-group'>
+						<label >Age</label>
+						<input class='form-control'	ng-model='newStudent.age' type='number'>
+					</div>
+					<div class='form-group'>
+						<label >Mark</label> <input
+							class='form-control' ng-model='newStudent.mark' type='number'>
+					</div>
+					<div class='form-group'>
+						<label >Total</label>
+						<input class='form-control' ng-model='newStudent.total' type='number'>
+					</div>
+					<button type="submit" class='btn btn-primary' ng-click='createStudent()'>Save</button>
+				</form>
+			</div>
+		</div>
+
+
+	</div>
+</body>
+</html>
